@@ -11,7 +11,8 @@ but the developer is responsible for building the Dart interface.
 ## Permission Definition
 
 - *Android*: This plugin automatically includes the `<uses-permission android:name="android.permission.READ_CONTACTS"/>`.
-  - If you want **WRITE** permission you must manually include `<uses-permission android:name="android.permission.WRITE_CONTACTS"/>` in your AndroidManifest.xml.
+  - If you want **WRITE** permission you must manually include `<uses-permission android:name="android.permission.WRITE_CONTACTS"/>` in your AndroidManifest.xml and in the example AndroidManifest.xml. 
+  - Then you must call `checkWriteContactPermission` or `requestWriteContactPermission` respectively. 
 - *iOS*: Not currently supported
 
 ## About <img src="https://upte.ch/img/logo.png" width="180">

@@ -33,7 +33,7 @@ class _DemoAppState extends State<DemoApp> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Check Contact Permission',
+                    'Check Read Contact Permission',
                     style: Theme.of(context).textTheme.button,
                     textAlign: TextAlign.center,
                   ),
@@ -53,7 +53,27 @@ class _DemoAppState extends State<DemoApp> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    'Request Contact Permission',
+                    'Check Write Contact Permission',
+                    style: Theme.of(context).textTheme.button,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                onPressed: () async {
+                  final String info = await _channelContact
+                      .invokeMethod('checkWriteContactPermission');
+                  setState(() {
+                    _granted = info == "granted";
+                  });
+                },
+              ),
+              OutlineButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4.0)),
+                borderSide: BorderSide(color: Colors.red),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Request Read Contact Permission',
                     style: Theme.of(context).textTheme.button,
                     textAlign: TextAlign.center,
                   ),
@@ -61,6 +81,26 @@ class _DemoAppState extends State<DemoApp> {
                 onPressed: () async {
                   final String info = await _channelContact
                       .invokeMethod('requestContactPermission');
+                  setState(() {
+                    _granted = info == "granted";
+                  });
+                },
+              ),
+              OutlineButton(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4.0)),
+                borderSide: BorderSide(color: Colors.red),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Request Write Contact Permission',
+                    style: Theme.of(context).textTheme.button,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                onPressed: () async {
+                  final String info = await _channelContact
+                      .invokeMethod('requestWriteContactPermission');
                   setState(() {
                     _granted = info == "granted";
                   });
